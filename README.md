@@ -1,4 +1,4 @@
 railgun
 =======
 
-Rail Shooter for Android
+Rail Shooter for Android. Made using libGDX.
