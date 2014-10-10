@@ -15,8 +15,8 @@ public class RailgunMain extends Game {
         Assets.load();
 		batch = new SpriteBatch();
         this.setScreen(new MainMenu(this));
-
 	}
+
 
 	@Override
 	public void render () {

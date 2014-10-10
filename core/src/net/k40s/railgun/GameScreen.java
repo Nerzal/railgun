@@ -37,7 +37,10 @@ public class GameScreen implements Screen {
         camera.update();
         game.batch.begin();
         game.batch.draw(Assets.gameBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        if(i < Gdx.graphics.getHeight()){
+        if(Gdx.input.isTouched()){
+            game.batch.draw(Assets.pepperSprite, Gdx.input.getX(), Gdx.input.getY());
+        }
+        if (i < Gdx.graphics.getHeight()) {
             game.batch.draw(Assets.pepperSprite, j, i);
             i++;
             j++;
@@ -47,6 +50,7 @@ public class GameScreen implements Screen {
         }
         game.batch.end();
     }
+
 
     @Override
     public void resize(int width, int height) {
