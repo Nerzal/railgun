@@ -18,7 +18,6 @@ public class MainMenu implements Screen {
 
     OrthographicCamera camera;
     Rectangle playBounds;
-    Rectangle exitBounds;
     Vector3 touchPoint;
 
     public MainMenu(final RailgunMain game) {
@@ -27,8 +26,6 @@ public class MainMenu implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         playBounds = new Rectangle(80, 494, 150, 150);
-        exitBounds = new Rectangle(80, 34, 150, 150);
-
     }
 
     @Override
@@ -51,11 +48,6 @@ public class MainMenu implements Screen {
             if(OverlapTester.pointInRectangle(playBounds, touchPoint.x, touchPoint.y))
                 game.setScreen(new GameScreen(game));
             this.dispose();
-
-            if(OverlapTester.pointInRectangle(exitBounds, touchPoint.x, touchPoint.y)){
-                System.exit(0);
-                this.dispose();
-            }
         }
 
     }

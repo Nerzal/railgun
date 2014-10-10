@@ -11,7 +11,7 @@ public class Assets {
     public static Texture play;
     public static TextureRegion playRegion;
 
-    public void load(){
+    public static void load(){
         play = new Texture("playButton.png"); // 192x96
         playRegion = new TextureRegion(play, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }

@@ -13,6 +13,7 @@ public class RailgunMain extends Game {
 	
 	@Override
 	public void create () {
+        Assets.load();
 		batch = new SpriteBatch();
         menu = new MainMenu(this);
 	}
