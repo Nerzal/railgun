@@ -9,13 +9,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class RailgunMain extends Game {
 	SpriteBatch batch;
-    MainMenu menu;
 	
 	@Override
 	public void create () {
         Assets.load();
 		batch = new SpriteBatch();
-        menu = new MainMenu(this);
+        this.setScreen(new MainMenu(this));
+
 	}
 
 	@Override

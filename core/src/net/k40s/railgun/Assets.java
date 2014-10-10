@@ -10,9 +10,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Assets {
     public static Texture play;
     public static TextureRegion playRegion;
+    public static Texture menuBackground;
 
     public static void load(){
         play = new Texture("playButton.png"); // 192x96
-        playRegion = new TextureRegion(play, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        menuBackground = new Texture("menuBackground.png");
     }
 }

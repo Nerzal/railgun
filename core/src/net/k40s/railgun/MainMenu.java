@@ -19,13 +19,15 @@ public class MainMenu implements Screen {
     OrthographicCamera camera;
     Rectangle playBounds;
     Vector3 touchPoint;
+    int halfWidth = Gdx.graphics.getWidth()/2;
+    int halfHeight = Gdx.graphics.getHeight()/2;
 
     public MainMenu(final RailgunMain game) {
         this.game = game;
         touchPoint = new Vector3();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        playBounds = new Rectangle(80, 494, 150, 150);
+        playBounds = new Rectangle(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
@@ -34,12 +36,12 @@ public class MainMenu implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glEnable(GL20.GL_TEXTURE_2D);
 
-        camera.update();
         game.batch.setProjectionMatrix(camera.combined);
+        camera.update();
 
         game.batch.begin();
-        // TODO game.batch.draw(Assets.menuBackground, 0, 0);
-        game.batch.draw(Assets.playRegion, 80, 494, 150, 150);
+        game.batch.draw(Assets.menuBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        game.batch.draw(Assets.play, halfWidth-96, halfHeight-48);
         game.batch.end();
 
         if(Gdx.input.justTouched()) {
