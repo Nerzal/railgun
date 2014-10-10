@@ -10,7 +10,7 @@
 DEFAULT_JVM_OPTS=""
 
 APP_NAME="Gradle"
-GRADLE_OPTS=-Xmx1024m
+GRADLE_OPTS=-Xmx512m
 APP_BASE_NAME=`basename "$0"`
 
 # Use the maximum available, or set MAX_FD != -1 to use that value.
