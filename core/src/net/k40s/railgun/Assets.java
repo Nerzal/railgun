@@ -9,11 +9,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class Assets {
     public static Texture play;
-    public static TextureRegion playRegion;
     public static Texture menuBackground;
+    public static Texture gameBackground;
+    public static Texture pepperSprite;
 
     public static void load(){
         play = new Texture("playButton.png"); // 192x96
         menuBackground = new Texture("menuBackground.png");
+        gameBackground = new Texture("menuBackground.png"); //TODO Create Background
+        pepperSprite = new Texture("pepperSprite.png");
     }
 }
