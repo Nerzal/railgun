@@ -39,14 +39,15 @@ public class GameScreen implements Screen {
         game.batch.draw(Assets.gameBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         if(Gdx.input.isTouched()){
             game.batch.draw(Assets.pepperSprite, Gdx.input.getX(), Gdx.input.getY());
-        }
-        if (i < Gdx.graphics.getHeight()) {
-            game.batch.draw(Assets.pepperSprite, j, i);
-            i++;
-            j++;
         } else {
-            i = 0;
-            j = 0;
+            if (i < Gdx.graphics.getHeight()) {
+                game.batch.draw(Assets.pepperSprite, j, i);
+                i++;
+                j++;
+            } else {
+                i = 0;
+                j = 0;
+            }
         }
         game.batch.end();
     }
