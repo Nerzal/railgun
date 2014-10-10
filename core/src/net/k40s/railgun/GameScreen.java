@@ -4,10 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
-
-import net.k40s.gameutils.OverlapTester;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
  * Created by k40s on 10/10/14.
@@ -16,15 +13,16 @@ public class GameScreen implements Screen {
 
     final RailgunMain game;
     OrthographicCamera camera;
-    int halfWidth = Gdx.graphics.getWidth()/2;
-    int halfHeight = Gdx.graphics.getHeight()/2;
     int i = 0;
     int j = 0;
+    float stateTime;
+    TextureRegion currentFrame;
 
     public GameScreen(final RailgunMain game) {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        stateTime = 0f;
     }
 
     @Override
@@ -38,7 +36,9 @@ public class GameScreen implements Screen {
         game.batch.begin();
         game.batch.draw(Assets.gameBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         if(Gdx.input.isTouched()){
-            game.batch.draw(Assets.pepperSprite, Gdx.input.getX(), Gdx.input.getY());
+            stateTime += Gdx.graphics.getDeltaTime();
+            currentFrame = Assets.spa.getKeyFrame(stateTime, true);
+            game.batch.draw(currentFrame, Gdx.input.getX(), Gdx.input.getY(), 64, 64);
         } else {
             if (i < Gdx.graphics.getHeight()) {
                 game.batch.draw(Assets.pepperSprite, j, i);
