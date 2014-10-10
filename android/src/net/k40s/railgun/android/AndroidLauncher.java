@@ -28,7 +28,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
 
     @Override
     public void login() {
-        
+
     }
 
     @Override
