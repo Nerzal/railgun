@@ -13,16 +13,23 @@ public class GameScreen implements Screen {
 
     final RailgunMain game;
     OrthographicCamera camera;
-    int i = 0;
-    int j = 0;
     float stateTime;
     TextureRegion currentFrame;
+    int lastPosX;
+    int lastPosY;
+    int halfWidth;
+    int halfHeight;
 
     public GameScreen(final RailgunMain game) {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         stateTime = 0f;
+        halfWidth = Gdx.graphics.getWidth()/2;
+        halfHeight = Gdx.graphics.getHeight()/2;
+        lastPosX = 50;
+        lastPosY = 50;
+
     }
 
     @Override
@@ -30,23 +37,29 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glEnable(GL20.GL_TEXTURE_2D);
-
         game.batch.setProjectionMatrix(camera.combined);
         camera.update();
         game.batch.begin();
         game.batch.draw(Assets.gameBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        stateTime += Gdx.graphics.getDeltaTime();
+        currentFrame = Assets.spa.getKeyFrame(stateTime, true);
         if(Gdx.input.isTouched()){
-            stateTime += Gdx.graphics.getDeltaTime();
-            currentFrame = Assets.spa.getKeyFrame(stateTime, true);
-            game.batch.draw(currentFrame, Gdx.input.getX(), Gdx.input.getY(), 64, 64);
+            lastPosX = Gdx.input.getX()-32;
+            lastPosY = Gdx.input.getY()-32;
+            game.batch.draw(currentFrame, lastPosX, lastPosY, 128, 128);
         } else {
-            if (i < Gdx.graphics.getHeight()) {
-                game.batch.draw(Assets.pepperSprite, j, i);
-                i++;
-                j++;
-            } else {
-                i = 0;
-                j = 0;
+            game.batch.draw(currentFrame, lastPosX, lastPosY, 128, 128);
+
+            if(lastPosX < halfWidth-32){
+                lastPosX++;
+            } else if(lastPosX > halfWidth-32){
+                lastPosX--;
+            }
+
+            if(lastPosY < halfHeight-32){
+                lastPosY++;
+            } else if (lastPosY > halfHeight-32){
+                lastPosY--;
             }
         }
         game.batch.end();
