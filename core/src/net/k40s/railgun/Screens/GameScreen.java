@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 import net.k40s.railgun.Assets;
@@ -29,6 +30,7 @@ public class GameScreen implements Screen, InputProcessor {
 	private Vector3 touchPoint;
 
     public GameScreen(final RailgunMain game) {
+        touchPoint = new Vector3();
         this.game = game;
         world = new World();
         worldRenderer = new WorldRenderer(game.batch);
@@ -45,10 +47,19 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
+        
+        if(Gdx.input.justTouched()){
+            camera.unproject(touchPoint);
+            if(world.ship.velocity.y > 0 && world.ship.getCenterY() > touchPoint.y ||
+                    world.ship.velocity.y < 0 && world.ship.getCenterY() < touchPoint.y)
+                world.ship.velocity.y *= -1;
 
+        }
+        world.updateWorld(delta);
         worldRenderer.drawWorld(world.enemies, world.ship);
         game.batch.setProjectionMatrix(camera.combined);
         camera.update();
+        /**
         game.batch.begin();
         game.batch.draw(Assets.gameBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         stateTime += Gdx.graphics.getDeltaTime();
@@ -75,6 +86,7 @@ public class GameScreen implements Screen, InputProcessor {
             }
         }
         game.batch.end();
+         */
     }
 
 

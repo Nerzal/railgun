@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
  * Created by Tobias on 12.10.2014.
  */
 public class DynamicGameObject extends GameObject {
-    protected Vector2 velocity;
+    public Vector2 velocity;
     protected float stateTime;
 
     public DynamicGameObject(int posX, int posY, int width, int height, Texture tex, Vector2 velocity) {
@@ -42,6 +42,10 @@ public class DynamicGameObject extends GameObject {
 
     public void setVelocity(Vector2 velocity) {
         this.velocity = velocity;
+    }
+
+    public Vector2 getVelocity(){
+        return velocity;
     }
 
 
