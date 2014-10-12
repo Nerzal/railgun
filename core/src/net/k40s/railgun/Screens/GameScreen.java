@@ -3,13 +3,13 @@ package net.k40s.railgun.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector3;
 
 import net.k40s.railgun.Assets;
-import net.k40s.railgun.RailgunMain;
+import net.k40s.railgun.World;
+import net.k40s.railgun.WorldRenderer;
 
 /**
  * Created by k40s on 10/10/14.
@@ -17,6 +17,8 @@ import net.k40s.railgun.RailgunMain;
 public class GameScreen implements Screen, InputProcessor {
 
     final RailgunMain game;
+    World world; //TODO Man könnte auch die box2D World benutzen hat evtl vorteile
+    WorldRenderer worldRenderer;
     OrthographicCamera camera;
     float stateTime;
     TextureRegion currentFrame;
@@ -28,6 +30,8 @@ public class GameScreen implements Screen, InputProcessor {
 
     public GameScreen(final RailgunMain game) {
         this.game = game;
+        world = new World();
+        worldRenderer = new WorldRenderer(game.batch);
         touchPoint = new Vector3();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -41,9 +45,8 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.gl.glEnable(GL20.GL_TEXTURE_2D);
+
+        worldRenderer.drawWorld(world.enemies, world.ship);
         game.batch.setProjectionMatrix(camera.combined);
         camera.update();
         game.batch.begin();
@@ -102,7 +105,7 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public void dispose() {
-
+        this.dispose();
     }
 
 	@Override

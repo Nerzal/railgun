@@ -6,15 +6,15 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.example.games.basegameutils.GameHelper;
 
-import net.k40s.railgun.RailgunMain;
+import net.k40s.railgun.Screens.RailgunMain;
 
-public class AndroidLauncher extends AndroidApplication implements GameHelper.GameHelperListener, com.google.example.games.basegameutils.GoogleInterface{
-	@Override
-	protected void onCreate (Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new RailgunMain(), config);
-	}
+public class AndroidLauncher extends AndroidApplication implements GameHelper.GameHelperListener, com.google.example.games.basegameutils.GoogleInterface {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+        initialize(new RailgunMain(), config);
+    }
 
     @Override
     public void onSignInFailed() {

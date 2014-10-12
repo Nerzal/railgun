@@ -1,8 +1,6 @@
 package net.k40s.railgun.GameEntities;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -15,18 +13,18 @@ public class EnemyEntity extends GameLiving {
         this.setHp(hp);
     }
 
-    public void checkVelocity(){
-        if(velocity.x > 0 && this.getCenterX() >= this.getTarget().getCenterX() ||
+    public void checkVelocity() {
+        if (velocity.x > 0 && this.getCenterX() >= this.getTarget().getCenterX() ||
                 velocity.x < 0 && this.getCenterX() <= this.getTarget().getCenterX())
             this.velocity.x *= -1;
 
-        if(velocity.y > 0 && this.getCenterY() >= this.getTarget().getCenterY() ||
+        if (velocity.y > 0 && this.getCenterY() >= this.getTarget().getCenterY() ||
                 velocity.y < 0 && this.getCenterY() <= this.getTarget().getCenterY())
             this.velocity.y *= -1;
     }
 
     @Override
-    public void update(float deltaTime){
+    public void update(float deltaTime) {
         checkVelocity();
         super.update(deltaTime);
     }

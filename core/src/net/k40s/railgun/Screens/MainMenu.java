@@ -3,6 +3,7 @@ package net.k40s.railgun.Screens;
 /**
  * Created by k40s on 10/10/14.
  */
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,8 +13,6 @@ import com.badlogic.gdx.math.Vector3;
 
 import net.k40s.gameutils.OverlapTester;
 import net.k40s.railgun.Assets;
-import net.k40s.railgun.RailgunMain;
-import net.k40s.railgun.Screens.GameScreen;
 
 public class MainMenu implements Screen {
 
@@ -22,8 +21,8 @@ public class MainMenu implements Screen {
     OrthographicCamera camera;
     Rectangle playBounds;
     Vector3 touchPoint;
-    int halfWidth = Gdx.graphics.getWidth()/2;
-    int halfHeight = Gdx.graphics.getHeight()/2;
+    int halfWidth = Gdx.graphics.getWidth() / 2;
+    int halfHeight = Gdx.graphics.getHeight() / 2;
 
     public MainMenu(final RailgunMain game) {
         this.game = game;
@@ -44,13 +43,13 @@ public class MainMenu implements Screen {
 
         game.batch.begin();
         game.batch.draw(Assets.menuBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        game.batch.draw(Assets.play, halfWidth-96, halfHeight-48);
+        game.batch.draw(Assets.play, halfWidth - 96, halfHeight - 48);
         game.batch.end();
 
-        if(Gdx.input.justTouched()) {
+        if (Gdx.input.justTouched()) {
             camera.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(),
                     0));
-            if(OverlapTester.pointInRectangle(playBounds, touchPoint.x, touchPoint.y))
+            if (OverlapTester.pointInRectangle(playBounds, touchPoint.x, touchPoint.y))
                 game.setScreen(new GameScreen(game));
             this.dispose();
         }
@@ -89,6 +88,7 @@ public class MainMenu implements Screen {
     @Override
     public void dispose() {
         // TODO Auto-generated method stub
+        dispose();
 
     }
 }
