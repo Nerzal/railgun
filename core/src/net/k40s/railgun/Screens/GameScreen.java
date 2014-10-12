@@ -1,4 +1,4 @@
-package net.k40s.railgun;
+package net.k40s.railgun.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector3;
+
+import net.k40s.railgun.Assets;
+import net.k40s.railgun.RailgunMain;
 
 /**
  * Created by k40s on 10/10/14.

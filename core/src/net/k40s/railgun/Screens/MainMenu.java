@@ -1,4 +1,4 @@
-package net.k40s.railgun;
+package net.k40s.railgun.Screens;
 
 /**
  * Created by k40s on 10/10/14.
@@ -11,6 +11,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 import net.k40s.gameutils.OverlapTester;
+import net.k40s.railgun.Assets;
+import net.k40s.railgun.RailgunMain;
+import net.k40s.railgun.Screens.GameScreen;
 
 public class MainMenu implements Screen {
 
