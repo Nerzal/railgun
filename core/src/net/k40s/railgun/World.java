@@ -36,15 +36,18 @@ public class World {
 
     private void generateEnemies(int enemyCount) {
         for (int i = 0; i < enemyCount; i++) {
-            enemies.add(new Pepper(screenWidth, (int) (screenCenterY + rand.nextInt(100)), 128, 128));
+            EnemyEntity tmpEnemy = new Pepper(screenWidth, (int) (screenCenterY + rand.nextInt(100)), 128, 128);
+            tmpEnemy.setTarget(ship);
+            enemies.add(tmpEnemy);
         }
     }
 
     public void updateWorld(float deltaTime) {
         ship.update(deltaTime);
 
-        for (EnemyEntity obj : enemies)
+        for (EnemyEntity obj : enemies) {
             obj.update(deltaTime);
+        }
 
         stateTime += deltaTime;
     }

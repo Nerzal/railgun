@@ -16,11 +16,11 @@ public class EnemyEntity extends GameLiving {
     public void checkVelocity() {
         if (velocity.x > 0 && this.getCenterX() >= this.getTarget().getCenterX() ||
                 velocity.x < 0 && this.getCenterX() <= this.getTarget().getCenterX())
-            this.velocity.x *= -1;
+            velocity.x *= -1;
 
         if (velocity.y > 0 && this.getCenterY() >= this.getTarget().getCenterY() ||
                 velocity.y < 0 && this.getCenterY() <= this.getTarget().getCenterY())
-            this.velocity.y *= -1;
+            velocity.y *= -1;
     }
 
     @Override

@@ -15,6 +15,7 @@ public class PlayerShip extends GameLiving {
 
     public PlayerShip(int posX, int posY, int width, int height) {
         super(posX, posY, width, height, Assets.spaceship, new Vector2(0, 0));
+        projectiles = new Array<Projectile>();
     }
 
     @Override
