@@ -30,7 +30,7 @@ public class DynamicGameObject extends GameObject {
 
         if (velocity.y > 0 && position.y + position.height < Gdx.graphics.getHeight()
                 || velocity.y < 0 && position.x + position.height > Gdx.graphics.getHeight())
-            this.position.x += velocity.x;
+            this.position.y += velocity.y;
 
         this.stateTime += deltaTime;
     }
