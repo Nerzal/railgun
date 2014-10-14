@@ -10,10 +10,12 @@ import com.badlogic.gdx.math.Rectangle;
 public class GameObject {
     protected Rectangle position;
     protected Texture tex;
+    protected boolean isVisible;
 
     public GameObject() {
         position = new Rectangle();
         tex = null;
+        isVisible = false;
     }
 
     public GameObject(int posX, int posY, int width, int height, Texture texture) {
@@ -23,6 +25,7 @@ public class GameObject {
         position.width = width;
         position.height = height;
         tex = texture;
+        isVisible = true;
     }
 
     /**
@@ -32,6 +35,11 @@ public class GameObject {
      * @param batch
      */
     public void draw(SpriteBatch batch) {
-        batch.draw(tex, position.x, position.y, position.width, position.height);
+        if(isVisible)
+           batch.draw(tex, position.x, position.y, position.width, position.height);
+    }
+
+    public void setVisibility(boolean visible){
+        isVisible = visible;
     }
 }
