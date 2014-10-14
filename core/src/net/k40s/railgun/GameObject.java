@@ -17,6 +17,7 @@ public class GameObject {
     }
 
     public GameObject(int posX, int posY, int width, int height, Texture texture) {
+        position = new Rectangle();
         position.x = posX;
         position.y = posY;
         position.width = width;

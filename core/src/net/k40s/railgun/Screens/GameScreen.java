@@ -5,10 +5,8 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
-import net.k40s.railgun.Assets;
 import net.k40s.railgun.World;
 import net.k40s.railgun.WorldRenderer;
 
@@ -33,6 +31,7 @@ public class GameScreen implements Screen, InputProcessor {
         touchPoint = new Vector3();
         this.game = game;
         world = new World();
+
         worldRenderer = new WorldRenderer(game.batch);
         touchPoint = new Vector3();
         camera = new OrthographicCamera();
@@ -47,9 +46,10 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
-        
+
         if(Gdx.input.justTouched()){
             camera.unproject(touchPoint);
+            world.ship.shot(delta);
             if(world.ship.velocity.y > 0 && world.ship.getCenterY() > touchPoint.y ||
                     world.ship.velocity.y < 0 && world.ship.getCenterY() < touchPoint.y)
                 world.ship.velocity.y *= -1;
