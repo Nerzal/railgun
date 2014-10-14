@@ -88,7 +88,7 @@ public class MainMenu implements Screen {
     @Override
     public void dispose() {
         // TODO Auto-generated method stub
-        dispose();
+
 
     }
 }
